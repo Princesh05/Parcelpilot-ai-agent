@@ -410,7 +410,11 @@ def humanize_response(text: str) -> str:
 def call_agent_api(message: str, account_id: str) -> dict:
     payload = {
         "message": message,
-        "user_context": {"account_id": account_id},
+        "user_context": {
+        "role": "customer",
+        "account_id": account_id,
+    },
+
     }
     try:
         response = requests.post(API_URL, json=payload, timeout=30)
